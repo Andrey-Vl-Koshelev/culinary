@@ -1,0 +1,20 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% block content %}
+<div class="img">
+    <img src="{% static 'webs/EwNWr0wha9i.jpg' %}" alt="">
+</div>
+<div class="avatar">
+    <img src="{% static 'webs/vH240j56yEI.jpg' %}" alt="">
+    <h2>Зефирные букеты от Коноваловой Натальи</h2>
+</div>
+<div class="block">
+    {% for project in projects %}
+    <div class="element">
+        <a href="{% url 'blogweb' %}">
+            <img src="{{ project.image.url }}" alt="">
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

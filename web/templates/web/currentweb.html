@@ -1,0 +1,22 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% block content %}
+<div class="avatar">
+    <img src="{% static 'webs/xMxgKX3mDwA.jpg' %}" alt="">
+    <h2>Зефирные букеты от Коноваловой Натальи</h2>
+</div>
+<h1>Оставьте свой отзыв:</h1>
+<h2>{{ error }}</h2>
+<form class="bg" method="POST" >
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="form__field">
+            <label for="formInput#text">{{ field.label }}</label>
+            {{ field }}
+        </div>
+    {% endfor %}
+    <div class="center">
+        <button class="btn">Отправить отзыв</button>
+    </div>
+</form>
+{% endblock %}

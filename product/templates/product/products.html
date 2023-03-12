@@ -1,0 +1,22 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% block content %}
+<h1>Все товары</h1>
+<h2 class="count">Все товары {{ products.count }}</h2>
+
+    <div class="element_product">
+        {% for product in products %}
+        <div class="top">
+            <a href="{% url 'product:detail' product.id %}">
+                <img src="{{ product.image.url }}" alt="">
+            </a>
+                <p>{{ product.name }}</p>
+                <p>{{ product.new_price }} руб</p>
+            {% if product.old_price %}
+                <p class="price">{{ product.old_price }} руб</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% block content %}
+<div class="avatar_blog transition">
+    <a href="{% url 'product:products' %}">
+        <img src="{% static 'webs/aXmqO_6G_xc.jpg' %}" alt="">
+    </a>
+    <h2>Зефирные букеты от Коноваловой Натальи</h2>
+</div>
+<h1>Отзывы:</h1>
+<div class="element_block">
+        {% for blog in blogs %}
+        <div class="blocks">
+                <p>{{ blog.date }}</p>
+                <p>{{ blog.name }}</p>
+                <p class="text">{{ blog.text}}</p>
+        </div>
+        {% endfor %}
+    {% if blogs.has_other_pages %}
+    <div class="pagination">
+      <ul class="container">
+
+        {% if blogs.has_previous %}
+        <li><a href="?page={{ blogs.previous_page_number }}" class="btn page-link">&lt; Вперёд</a></li>
+        {% endif %}
+
+        {% for page in custom_range %}
+          {% if page == blogs.number %}
+           <li><a href="?page={{page}}" class="btn page-link btn--sub">{{ page }}</a></li>
+          {% else %}
+            <li><a href="?page={{page}}" class="btn page-link">{{ page }}</a></li>
+          {% endif %}
+        {% endfor %}
+
+        {% if blogs.has_next %}
+        <li><a href="?page={{ blogs.next_page_number }}" class="btn page-link">Назад &gt;</a></li>
+        {% endif %}
+      </ul>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
